@@ -25,4 +25,14 @@ router.post("/message", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const resultado = await Message.findByIdAndDelete({ _id: id });
+    res.send(resultado);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 module.exports = router;
